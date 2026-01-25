@@ -1,0 +1,58 @@
+---
+const phone = '56912345678';
+const message = 'Hola! Quiero hacer un pedido en Dulce-mente.';
+const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+---
+
+<section id="contacto" class="section bg-cacao">
+	<div class="container-page">
+		<div class="grid gap-8 rounded-2xl border border-white/10 bg-white/5 p-8 shadow-soft backdrop-blur md:grid-cols-2 md:p-12">
+			<div>
+				<h2 class="font-serif text-3xl font-bold tracking-tight text-trigo" data-aos="fade-up">
+					¿Listo para pedir?
+				</h2>
+				<p class="mt-3 max-w-prose text-trigo/80" data-aos="fade-up" data-aos-delay="80">
+					Escríbenos por WhatsApp y te ayudamos a elegir: panes del día, mermeladas y favoritos
+					de temporada.
+				</p>
+
+				<div class="mt-7 flex flex-col gap-3 sm:flex-row" data-aos="fade-up" data-aos-delay="160">
+					<a
+						href={href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="btn inline-flex w-full items-center justify-center rounded-xl bg-mermelada px-5 py-3 text-sm font-bold text-white transition hover:bg-[#a20f1a] sm:w-auto"
+					>
+						Pedir por WhatsApp
+					</a>
+					<a href="#delicias" class="btn-secondary w-full sm:w-auto">
+						Ver productos
+					</a>
+				</div>
+			</div>
+
+			<div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10" data-aos="fade-up" data-aos-delay="220">
+				<p class="text-sm font-semibold text-trigo/90">Sugerencia para tu mensaje</p>
+				<p class="mt-2 text-sm leading-relaxed text-trigo/70">
+					“Hola! Quiero 1 Pan Integral y 1 Mermelada Artesanal. ¿Disponibilidad y precio para hoy?”
+				</p>
+
+				<div class="mt-6 grid gap-3 text-sm text-trigo/75">
+					<div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+						<span>Respuesta rápida</span>
+						<span class="text-xs font-bold text-trigo/90">En horario laboral</span>
+					</div>
+					<div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+						<span>Envíos</span>
+						<span class="text-xs font-bold text-trigo/90">A coordinar</span>
+					</div>
+					<div class="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/10">
+						<span>Retiro</span>
+						<span class="text-xs font-bold text-trigo/90">Por encargo</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

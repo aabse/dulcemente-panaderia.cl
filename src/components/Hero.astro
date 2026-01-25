@@ -1,0 +1,84 @@
+---
+const bg =
+	'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=2400&q=80';
+---
+
+<section class="relative overflow-hidden">
+	<div class="relative min-h-[92vh]">
+		<div class="absolute inset-0">
+			<img
+				src={bg}
+				alt=""
+				aria-hidden="true"
+				fetchpriority="high"
+				loading="eager"
+				decoding="async"
+				class="h-full w-full object-cover will-change-transform"
+				data-parallax
+			/>
+			<div class="absolute inset-0 bg-gradient-to-b from-cacao/45 via-cacao/35 to-harina/95" />
+			<div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_55%)]" />
+		</div>
+
+		<div class="container-page relative flex min-h-[92vh] items-center py-24">
+			<div class="max-w-3xl">
+				<p
+					class="inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 text-xs font-semibold tracking-wide text-white/90 ring-1 ring-white/25 backdrop-blur"
+					data-aos="fade-up"
+				>
+					Panadería artesanal · masa madre · ingredientes reales
+				</p>
+
+				<h1
+					class="mt-6 font-serif text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+					data-aos="fade-up"
+					data-aos-delay="80"
+				>
+					El sabor de lo hecho en casa
+				</h1>
+
+				<p
+					class="mt-5 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg"
+					data-aos="fade-up"
+					data-aos-delay="140"
+				>
+					En Dulce-mente horneamos con calma: fermentaciones largas, recetas de familia y un
+					toque de mermelada en el corazón.
+				</p>
+
+				<div class="mt-8 flex flex-col gap-3 sm:flex-row" data-aos="fade-up" data-aos-delay="220">
+					<a href="#delicias" class="btn-primary w-full sm:w-auto">
+						Ver Delicias
+					</a>
+					<a href="#historia" class="btn-secondary w-full sm:w-auto">
+						Conocer el proceso
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="module">
+		const img = document.querySelector('[data-parallax]');
+		const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+
+		if (img && !reduceMotion) {
+			let raf = 0;
+
+			const update = () => {
+				raf = 0;
+				const y = window.scrollY * 0.08;
+				img.style.transform = `translate3d(0, ${y}px, 0) scale(1.06)`;
+			};
+
+			const onScroll = () => {
+				if (raf) return;
+				raf = requestAnimationFrame(update);
+			};
+
+			update();
+			addEventListener('scroll', onScroll, { passive: true });
+		}
+	</script>
+</section>
+

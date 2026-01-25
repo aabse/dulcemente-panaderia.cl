@@ -1,0 +1,56 @@
+---
+const features = [
+	{
+		title: '100% Integral',
+		description: 'Harinas nobles y fermentación lenta para un sabor profundo.',
+		icon: 'wheat',
+		delay: 0,
+	},
+	{
+		title: 'Sin conservantes',
+		description: 'Solo ingredientes reales. Fresco, simple y honesto.',
+		icon: 'leaf',
+		delay: 100,
+	},
+	{
+		title: 'Recetas de la abuela',
+		description: 'Tradición familiar con un toque moderno y artesanal.',
+		icon: 'book-heart',
+		delay: 200,
+	},
+] as const;
+---
+
+<section class="section">
+	<div class="container-page">
+		<div class="max-w-2xl">
+			<h2 class="font-serif text-3xl font-bold tracking-tight text-tostado" data-aos="fade-up">
+				Hecho con intención, horneado con cariño
+			</h2>
+			<p class="mt-3 text-cacao/70" data-aos="fade-up" data-aos-delay="80">
+				Pequeños detalles que se sienten en cada mordisco.
+			</p>
+		</div>
+
+		<div class="mt-10 grid gap-5 md:grid-cols-3">
+			{features.map((f) => (
+				<article
+					class="card p-6 transition hover:-translate-y-0.5 hover:shadow-glow"
+					data-aos="fade-up"
+					data-aos-delay={String(f.delay)}
+				>
+					<div class="flex items-start gap-4">
+						<div class="rounded-2xl bg-trigo/60 p-3 ring-1 ring-white/70">
+							<i data-lucide={f.icon} class="h-6 w-6 text-tostado" aria-hidden="true" />
+						</div>
+						<div>
+							<h3 class="text-base font-bold text-cacao">{f.title}</h3>
+							<p class="mt-1 text-sm leading-relaxed text-cacao/70">{f.description}</p>
+						</div>
+					</div>
+				</article>
+			))}
+		</div>
+	</div>
+</section>
+

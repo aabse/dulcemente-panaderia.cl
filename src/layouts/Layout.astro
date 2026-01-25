@@ -1,0 +1,107 @@
+---
+import '../styles/global.css';
+
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+
+type Props = {
+	title?: string;
+	description?: string;
+};
+
+const {
+	title = 'Dulce-mente | Panadería artesanal',
+	description = 'Panadería artesanal de masa madre, panes integrales y delicias hechas a mano. El sabor de lo hecho en casa.',
+} = Astro.props as Props;
+
+const canonicalUrl = Astro.url;
+const ogImage =
+	'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=1600&q=80';
+---
+
+<!doctype html>
+<html lang="es-CL">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalUrl.href} />
+		<meta name="theme-color" content="#5B3A29" />
+
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl.href} />
+		<meta property="og:image" content={ogImage} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap"
+		/>
+
+		<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+	</head>
+
+	<body class="min-h-screen overflow-x-hidden">
+		<div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+			<div
+				class="absolute -top-28 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-trigo/70 blur-3xl"
+			/>
+			<div
+				class="absolute -bottom-24 -left-24 h-[520px] w-[520px] rounded-full bg-mermelada/10 blur-3xl"
+			/>
+		</div>
+
+		<Header />
+
+		<main>
+			<slot />
+		</main>
+
+		<Footer />
+
+		<WhatsAppButton phone="56912345678" message="Hola! Quiero hacer un pedido en Dulce-mente." />
+
+		<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+		<script src="https://unpkg.com/lucide@0.563.0/dist/umd/lucide.min.js" defer></script>
+		<script is:inline>
+			window.addEventListener('load', () => {
+				const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+
+				// AOS (Animate On Scroll)
+				if (!reduceMotion && window.AOS) {
+					window.AOS.init({
+						once: true,
+						duration: 700,
+						offset: 80,
+						easing: 'ease-out-cubic',
+					});
+				} else {
+					// Fallback: si AOS no está (o reduce motion), evita que el CSS de AOS oculte contenido
+					document.querySelectorAll('[data-aos]').forEach((el) => {
+						el.removeAttribute('data-aos');
+						el.removeAttribute('data-aos-delay');
+						el.removeAttribute('data-aos-duration');
+						el.removeAttribute('data-aos-offset');
+						el.style.opacity = '1';
+						el.style.transform = 'none';
+					});
+				}
+
+				// Lucide icons
+				window.lucide?.createIcons?.();
+			});
+		</script>
+	</body>
+</html>
